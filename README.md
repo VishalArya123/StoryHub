@@ -65,9 +65,6 @@ Authentication: /login.php, /signup.php, /logout.php, /check-auth.php
 Stories: /get-stories.php, /get-story.php, /getFeaturedStories.php, /publishStory.php, /like-story.php, /update-likes.php
 Drafts: /getDrafts.php, /getDraft.php, /saveDraft.php, /deleteDraft.php
 
-🛠️ Contributing
-We welcome contributions! Please fork the repository, make your changes, and submit a pull request.
-
 📜 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
