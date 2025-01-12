@@ -15,7 +15,7 @@ const ExploreStories = () => {
   const fetchStories = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`https://storyhub.freewebhostmost.com/public_html/get-stories.php?genre=${selectedGenre}`);
+      const response = await fetch(`https://storyhub.freewebhostmost.com/get-stories.php?genre=${selectedGenre}`);
       const data = await response.json();
       
       if (data.success) {
