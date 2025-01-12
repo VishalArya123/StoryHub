@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
     // Check if user is logged in on page load
     const checkLoggedIn = async () => {
       try {
-        const response = await fetch('https://storyhub.freewebhostmost.com/check-auth.php', {
+        const response = await fetch('https://storyhub.freewebhostmost.com/public_html/check-auth.php', {
           credentials: 'include' // This is important for sending cookies
         });
         const data = await response.json();
@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch('https://storyhub.freewebhostmost.com/login.php', {
+      const response = await fetch('https://storyhub.freewebhostmost.com/public_html/login.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (name, email, password) => {
     try {
-      const response = await fetch('https://storyhub.freewebhostmost.com/signup.php', {
+      const response = await fetch('https://storyhub.freewebhostmost.com/public_html/signup.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await fetch('https://storyhub.freewebhostmost.com/logout.php', {
+      await fetch('https://storyhub.freewebhostmost.com/public_html/logout.php', {
         credentials: 'include'
       });
       setUser(null);
