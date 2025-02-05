@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
     const checkLoggedIn = async () => {
       try {
         const response = await fetch('https://storyhub.freewebhostmost.com/check-auth.php', {
-          credentials: 'include' // This is important for sending cookies
+          credentials: 'include' // Ensures cookies are sent
         });
         const data = await response.json();
         if (data.success) {
@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
-        credentials: 'include'
+        credentials: 'include' // Required to maintain sessions
       });
       const data = await response.json();
       if (data.success) {
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ name, email, password }),
-        credentials: 'include'
+        credentials: 'include' // Ensures session cookies are set
       });
       const data = await response.json();
       if (data.success) {
@@ -75,7 +75,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await fetch('https://storyhub.freewebhostmost.com/logout.php', {
-        credentials: 'include'
+        credentials: 'include' // Ensures session is properly destroyed
       });
       setUser(null);
     } catch (error) {
@@ -91,4 +91,3 @@ export const AuthProvider = ({ children }) => {
 };
 
 export const useAuth = () => useContext(AuthContext);
-
