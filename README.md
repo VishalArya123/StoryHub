@@ -1,70 +1,139 @@
-📖 StoryHub - A Story Publishing Platform
-StoryHub is an interactive and user-friendly platform designed for readers and writers. It provides a seamless experience for publishing, reading, and discovering stories across various genres. Writers can create and manage their stories, while readers can explore, like, and read stories based on their interests.
+# 📖 StoryHub - A Story Publishing Platform
 
-🏠 Home Page
-The Home Page serves as the entry point to StoryHub. It includes a hero section that introduces the platform, a grid of featured stories, and a categorized list of genres for easy navigation. The page is styled using Tailwind CSS, with gradients and responsive design to enhance the user experience.
+**StoryHub** is an interactive and user-friendly platform designed for readers and writers. It provides a seamless experience for publishing, reading, and discovering stories across various genres. Writers can create and manage their stories, while readers can explore, like, and engage with stories based on their interests.
 
-🔍 Explore Stories
-The Explore Stories page allows readers to browse stories by different genres. The page fetches story data from the backend API and uses StoryCard components to display each story's preview. Filters enable users to select stories from their favorite genres, making it easy to discover new content.
+---
 
-✍️ Write Story
-Write Story provides a rich text editor where writers can draft their stories. The editor includes features such as draft saving, character count tracking, and a publishing button. Writers can manage their drafts, revise them, and publish them when they’re ready.
+## 🚀 Features
 
-🔗 Navbar
-The Navbar provides a responsive navigation system. It includes:
+### 🌟 Core Features
+- **User Authentication** – Secure login and signup with session-based authentication.
+- **Story Management** – Create, edit, save drafts, and publish stories effortlessly.
+- **Story Liking System** – Support your favorite stories with a like feature.
+- **Genre Categorization** – Browse and filter stories by genre.
+- **Draft Management** – Save and edit drafts before publishing.
+- **Responsive Design** – Optimized for both desktop and mobile devices.
+- **Error Handling** – Proper validation and error messages for a smooth user experience.
 
-A mobile-friendly menu for seamless navigation across devices
-User authentication status handling (logged in or out)
-A profile dropdown menu for managing user settings and accessing personal information
+### 🛠 Backend API Features
+- **Secure Authentication** – Password hashing for user login and signup.
+- **Story CRUD Operations** – Create, read, update, and delete stories.
+- **Draft Management** – Save and modify drafts before publishing.
+- **Genre Filtering** – Fetch stories based on genre preferences.
+- **CORS Support** – Ensures smooth communication between frontend and backend.
 
-📱 Footer
-The Footer contains helpful links and social media icons, along with quick links for easy access to genres and other sections of the platform. It also includes copyright information.
+---
 
-🖼️ StoryCard
-The StoryCard is a reusable component for displaying story previews. Each card includes:
+## 📌 Pages Overview
 
-Story title, description, and author
-Like functionality to allow users to support stories they enjoy
-Truncated descriptions to show a snippet of the story without overwhelming the reader
+### 🏠 Home Page
+The home page provides an engaging entry point with:
+- A **hero section** introducing StoryHub.
+- A **featured stories** grid for showcasing top content.
+- A categorized **genre list** for easy navigation.
 
-🔐 Login & Signup
-The Login and Signup pages allow users to create accounts, log in, and manage their authentication status. These pages handle form validation, error messages, and redirection after successful authentication.
+### 🔍 Explore Stories
+- Browse stories based on genre preferences.
+- Data is fetched from the backend API.
+- Uses **StoryCard** components for an engaging preview experience.
+- Apply filters to discover new stories easily.
 
-🌟 Key Features
-Authentication System: Secure login and signup with session-based management.
-Draft Management: Write and save drafts before publishing.
-Story Liking System: Show support for stories by liking them.
-Genre Categorization: Browse stories based on specific genres.
-Responsive Design: Optimized for both desktop and mobile devices.
-Error Handling: Proper error messages for a smooth user experience.
+### ✍ Write Story
+- A **rich text editor** for drafting and publishing stories.
+- Features include **draft saving, character count tracking,** and **one-click publishing**.
+- Writers can revise and manage their drafts seamlessly.
 
-🛠️ Backend API Features
-The backend is built using PHP and communicates with a MySQL database. Key features include:
+### 🔗 Navbar
+- **Mobile-friendly navigation** for a seamless experience.
+- **User authentication status handling** (logged in/out state).
+- **Profile dropdown menu** for managing user settings and account details.
 
-Authentication: User signup, login, and logout with secure password hashing.
-Story Management: CRUD operations for stories, including features like publishing and liking.
-Draft Management: Save and edit story drafts before publishing.
-Genre Filtering: Filter stories based on genre preferences.
-CORS Support: Allows cross-origin requests to ensure frontend-backend communication.
+### 📱 Footer
+- Includes **quick links**, **social media icons**, and **genre shortcuts**.
+- Displays **copyright information**.
 
-📦 Technologies Used
-Frontend: React, Vite, Tailwind CSS
-Backend: PHP, MySQL, PDO
-Authentication: Session-based authentication with password hashing
-Styling: Tailwind CSS with a responsive, mobile-first approach
+### 🖼 StoryCard
+- A **reusable component** for displaying story previews.
+- Includes **title, description, author, and like functionality**.
+- Truncated descriptions offer a **quick snippet** without overwhelming the reader.
 
-🚀 Getting Started
-Clone the repository.
-Set up your local development environment.
-Install dependencies for both frontend and backend.
-Configure your MySQL database with the provided SQL files.
-Run the backend and frontend locally.
+### 🔐 Login & Signup
+- Secure **user authentication system**.
+- Includes **form validation, error handling,** and **post-login redirection**.
 
-📄 API Endpoints
-Authentication: /login.php, /signup.php, /logout.php, /check-auth.php
-Stories: /get-stories.php, /get-story.php, /getFeaturedStories.php, /publishStory.php, /like-story.php, /update-likes.php
-Drafts: /getDrafts.php, /getDraft.php, /saveDraft.php, /deleteDraft.php
+---
 
-📜 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 📦 Tech Stack
 
+### Frontend:
+- **React** (with Vite for fast builds)
+- **Tailwind CSS** (for responsive styling)
+
+### Backend:
+- **PHP** (with MySQL & PDO for database interactions)
+- **Session-based authentication** (secure password hashing)
+
+---
+
+## 📄 API Endpoints
+
+### Authentication:
+- `/login.php` – User login
+- `/signup.php` – User registration
+- `/logout.php` – User logout
+- `/check-auth.php` – Verify authentication status
+
+### Stories:
+- `/get-stories.php` – Fetch all stories
+- `/get-story.php` – Fetch a single story
+- `/getFeaturedStories.php` – Fetch featured stories
+- `/publishStory.php` – Publish a story
+- `/like-story.php` – Like a story
+- `/update-likes.php` – Update like count
+
+### Drafts:
+- `/getDrafts.php` – Fetch all drafts
+- `/getDraft.php` – Fetch a single draft
+- `/saveDraft.php` – Save a draft
+- `/deleteDraft.php` – Delete a draft
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the Repository
+```sh
+ git clone https://github.com/your-repo/storyhub.git
+```
+
+### 2️⃣ Set Up Your Development Environment
+- Ensure you have **PHP, MySQL, and Node.js** installed.
+
+### 3️⃣ Install Dependencies
+#### Frontend:
+```sh
+cd frontend
+npm install
+```
+#### Backend:
+- Set up your **MySQL database** using the provided SQL file.
+- Configure database credentials in your PHP backend.
+
+### 4️⃣ Run the Application
+#### Start the Backend:
+```sh
+php -S localhost:8000 -t backend
+```
+#### Start the Frontend:
+```sh
+cd frontend
+npm run dev
+```
+Your application will be available at `http://localhost:5173`.
+
+---
+
+## 📜 License
+This project is licensed under the **MIT License**. See the `LICENSE` file for details.
+
+Happy Writing & Reading! 🚀📖
