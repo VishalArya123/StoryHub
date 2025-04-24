@@ -15,7 +15,7 @@ const StoryCard = ({ story, onUpdate }) => {
 
     try {
       setLoading(true);
-      const response = await fetch('https://storyhub.freewebhostmost.com/like-story.php', {
+      const response = await fetch('https://vishal-arya.rf.gd/like-story.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

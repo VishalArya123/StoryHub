@@ -16,7 +16,7 @@ const StoryPage = () => {
   const fetchStory = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`https://storyhub.freewebhostmost.com/get-story.php?id=${id}`);
+      const response = await fetch(`https://vishal-arya.rf.gd/get-story.php?id=${id}`);
       const data = await response.json();
       
       if (data.success) {
@@ -34,7 +34,7 @@ const StoryPage = () => {
   const handleLike = async () => {
     try {
       setLiking(true);
-      const response = await fetch('https://storyhub.freewebhostmost.com/update-likes.php', {
+      const response = await fetch('https://vishal-arya.rf.gd/update-likes.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
