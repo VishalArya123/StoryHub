@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
     // Check if user is logged in on page load
     const checkLoggedIn = async () => {
       try {
-        const response = await fetch('https://storyhub.freewebhostmost.com/check-auth.php', {
+        const response = await fetch('https://vishal-arya.rf.gd/check-auth.php', {
           credentials: 'include' // Ensures cookies are sent
         });
         const data = await response.json();
@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch('https://storyhub.freewebhostmost.com/login.php', {
+      const response = await fetch('https://vishal-arya.rf.gd/login.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (name, email, password) => {
     try {
-      const response = await fetch('https://storyhub.freewebhostmost.com/signup.php', {
+      const response = await fetch('https://vishal-arya.rf.gd/signup.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await fetch('https://storyhub.freewebhostmost.com/logout.php', {
+      await fetch('https://vishal-arya.rf.gd/logout.php', {
         credentials: 'include' // Ensures session is properly destroyed
       });
       setUser(null);
