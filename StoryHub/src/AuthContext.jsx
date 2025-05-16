@@ -6,12 +6,17 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Check if user is logged in on page load
     const checkLoggedIn = async () => {
       try {
         const response = await fetch('https://vishal-arya.rf.gd/check-auth.php', {
-          credentials: 'include' // Ensures cookies are sent
+          credentials: 'include',
+          headers: {
+            'Accept': 'application/json',
+          }
         });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
         const data = await response.json();
         if (data.success) {
           setUser(data.user);
@@ -33,20 +38,20 @@ export const AuthProvider = ({ children }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify({ email, password }),
-        credentials: 'include' // Required to maintain sessions
+        credentials: 'include'
       });
       const data = await response.json();
       if (data.success) {
         setUser(data.user);
         return { success: true };
-      } else {
-        return { success: false, error: data.error };
       }
+      return { success: false, error: data.error || 'Login failed' };
     } catch (error) {
       console.error('Login error:', error);
-      return { success: false, error: 'An error occurred during login' };
+      return { success: false, error: 'Network error during login' };
     }
   };
 
@@ -56,26 +61,29 @@ export const AuthProvider = ({ children }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify({ name, email, password }),
-        credentials: 'include' // Ensures session cookies are set
+        credentials: 'include'
       });
       const data = await response.json();
-      if (data.success) {
-        return { success: true };
-      } else {
-        return { success: false, error: data.error };
-      }
+      return data.success 
+        ? { success: true } 
+        : { success: false, error: data.error || 'Signup failed' };
     } catch (error) {
       console.error('Signup error:', error);
-      return { success: false, error: 'An error occurred during signup' };
+      return { success: false, error: 'Network error during signup' };
     }
   };
 
   const logout = async () => {
     try {
       await fetch('https://vishal-arya.rf.gd/logout.php', {
-        credentials: 'include' // Ensures session is properly destroyed
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json',
+        }
       });
       setUser(null);
     } catch (error) {
