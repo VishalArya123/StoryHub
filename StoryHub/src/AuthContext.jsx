@@ -4,19 +4,18 @@ const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Check if user is logged in on page load
     const checkLoggedIn = async () => {
       try {
+        setLoading(true);
         const response = await fetch('https://vishal-arya.rf.gd/check-auth.php', {
-          credentials: 'include',
-          headers: {
-            'Accept': 'application/json',
-          }
+          method: 'GET',
+          credentials: 'include', // Ensures cookies are sent
         });
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+        
         const data = await response.json();
         if (data.success) {
           setUser(data.user);
@@ -26,6 +25,8 @@ export const AuthProvider = ({ children }) => {
       } catch (error) {
         console.error('Error checking authentication:', error);
         setUser(null);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -38,20 +39,21 @@ export const AuthProvider = ({ children }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
         },
         body: JSON.stringify({ email, password }),
-        credentials: 'include'
+        credentials: 'include' // Required to maintain sessions
       });
+      
       const data = await response.json();
       if (data.success) {
         setUser(data.user);
         return { success: true };
+      } else {
+        return { success: false, error: data.error };
       }
-      return { success: false, error: data.error || 'Login failed' };
     } catch (error) {
       console.error('Login error:', error);
-      return { success: false, error: 'Network error during login' };
+      return { success: false, error: 'An error occurred during login. Please try again later.' };
     }
   };
 
@@ -61,38 +63,39 @@ export const AuthProvider = ({ children }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
         },
         body: JSON.stringify({ name, email, password }),
-        credentials: 'include'
+        credentials: 'include' // Ensures session cookies are set
       });
+      
       const data = await response.json();
-      return data.success 
-        ? { success: true } 
-        : { success: false, error: data.error || 'Signup failed' };
+      if (data.success) {
+        return { success: true };
+      } else {
+        return { success: false, error: data.error };
+      }
     } catch (error) {
       console.error('Signup error:', error);
-      return { success: false, error: 'Network error during signup' };
+      return { success: false, error: 'An error occurred during signup. Please try again later.' };
     }
   };
 
   const logout = async () => {
     try {
       await fetch('https://vishal-arya.rf.gd/logout.php', {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Accept': 'application/json',
-        }
+        method: 'POST', // Changed to POST as it's modifying state
+        credentials: 'include' // Ensures session is properly destroyed
       });
       setUser(null);
+      return { success: true };
     } catch (error) {
       console.error('Logout error:', error);
+      return { success: false, error: 'An error occurred during logout' };
     }
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, signup }}>
+    <AuthContext.Provider value={{ user, loading, login, logout, signup }}>
       {children}
     </AuthContext.Provider>
   );
