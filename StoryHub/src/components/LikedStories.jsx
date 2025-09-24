@@ -21,7 +21,7 @@ const LikedStories = () => {
   const fetchLikedStories = async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://vishal-arya.rf.gd/get-liked-stories.php', {
+      const response = await fetch('http://localhost/StoryHub/StoryHub/Backend/get-liked-stories.php', {
         credentials: 'include' // Include credentials in the request
       });
       const data = await response.json();

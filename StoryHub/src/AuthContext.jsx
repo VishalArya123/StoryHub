@@ -11,7 +11,7 @@
 //     const checkLoggedIn = async () => {
 //       try {
 //         setLoading(true);
-//         const response = await fetch('https://vishal-arya.rf.gd/check-auth.php', {
+//         const response = await fetch('http://localhost/StoryHub/StoryHub/Backend/check-auth.php', {
 //           method: 'GET',
 //           credentials: 'include', // Ensures cookies are sent
 //         });
@@ -35,7 +35,7 @@
 
 //   const login = async (email, password) => {
 //     try {
-//       const response = await fetch('https://vishal-arya.rf.gd/login.php', {
+//       const response = await fetch('http://localhost/StoryHub/StoryHub/Backend/login.php', {
 //         method: 'POST',
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -59,7 +59,7 @@
 
 //   const signup = async (name, email, password) => {
 //     try {
-//       const response = await fetch('https://vishal-arya.rf.gd/signup.php', {
+//       const response = await fetch('http://localhost/StoryHub/StoryHub/Backend/signup.php', {
 //         method: 'POST',
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -82,7 +82,7 @@
 
 //   const logout = async () => {
 //     try {
-//       await fetch('https://vishal-arya.rf.gd/logout.php', {
+//       await fetch('http://localhost/StoryHub/StoryHub/Backend/logout.php', {
 //         method: 'POST', // Changed to POST as it's modifying state
 //         credentials: 'include' // Ensures session is properly destroyed
 //       });
@@ -106,7 +106,7 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const AuthContext = createContext(null);
 
-const API_BASE_URL = 'https://vishal-arya.rf.gd';
+const API_BASE_URL = 'http://localhost/StoryHub/StoryHub/Backend';
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);

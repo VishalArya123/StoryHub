@@ -34,7 +34,7 @@ const WriteStory = () => {
 
   const fetchDrafts = async () => {
     try {
-      const response = await fetch('https://vishal-arya.rf.gd/getDrafts.php');
+      const response = await fetch('http://localhost/StoryHub/StoryHub/Backend/getDrafts.php');
       const data = await response.json();
       if (data.success && data.drafts) {
         setDrafts(data.drafts);
@@ -48,7 +48,7 @@ const WriteStory = () => {
 
   const saveDraft = async () => {
     try {
-      const response = await fetch('https://vishal-arya.rf.gd/saveDraft.php', {
+      const response = await fetch('http://localhost/StoryHub/StoryHub/Backend/saveDraft.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ const WriteStory = () => {
     }
 
     try {
-      const response = await fetch('https://vishal-arya.rf.gd/publishStory.php', {
+      const response = await fetch('http://localhost/StoryHub/StoryHub/Backend/publishStory.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ const WriteStory = () => {
 
   const loadDraft = async (draftId) => {
     try {
-      const response = await fetch(`https://vishal-arya.rf.gd/getDraft.php?id=${draftId}`);
+      const response = await fetch(`http://localhost/StoryHub/StoryHub/Backend/getDraft.php?id=${draftId}`);
       const data = await response.json();
       setStory(data);
     } catch (error) {
@@ -121,7 +121,7 @@ const WriteStory = () => {
   const deleteDraft = async (draftId) => {
     if (window.confirm('Are you sure you want to delete this draft?')) {
       try {
-        const response = await fetch(`https://vishal-arya.rf.gd/deleteDraft.php?id=${draftId}`, {
+        const response = await fetch(`http://localhost/StoryHub/StoryHub/Backend/deleteDraft.php?id=${draftId}`, {
           method: 'DELETE'
         });
         const data = await response.json();

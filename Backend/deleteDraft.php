@@ -1,27 +1,24 @@
 <?php
 require_once 'config.php';
 header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: http://localhost:5173");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-// Get the id from the URL parameters
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit;
+}
+
 $id = $_GET['id'];
-
 try {
-    // SQL query to delete a draft by id
     $sql = "DELETE FROM drafts WHERE id = :id";
-    
-    // Prepare the statement
     $stmt = $pdo->prepare($sql);
-
-    // Bind the id parameter to the SQL statement
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-
-    // Execute the statement
     $success = $stmt->execute();
-
-    // Return the success status in JSON format
     echo json_encode(['success' => $success]);
 } catch (PDOException $e) {
-    // Return an error message if something goes wrong
     echo json_encode(['success' => false, 'error' => $e->getMessage()]);
 }
 ?>
